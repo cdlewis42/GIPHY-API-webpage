@@ -16,8 +16,7 @@ function buttonReady(arr) {
 }
 //function for adding a new anime button through text box
 $(document).ready(function(){
-$("#submit").on("click", function (event) {
-    event.preventDefault();
+$("#submit").on("click", function () {
     input = $("#userInput").val().trim();
     if(input===""){
         return false;
@@ -25,6 +24,7 @@ $("#submit").on("click", function (event) {
     topics.push(input)
     buttonReady(topics)
     $("#userInput").val("")
+    return false;
 
 })
 
@@ -34,8 +34,8 @@ $("#submit").on("click", function (event) {
 
 
 //On click, pulls data-anime to add to the queryURL
-$(document).ready(function () {
-    $(".animeButton").on("click", function () {
+    
+    $(document).on("click", ".animeButton",function () {
         //"This" will pull the buttons data that is clicked.
         var anime = $(this).attr("data-anime");
         var apiKey = "&api_key=KFEVEi0ML7VBhu75LJ67c8sj0fHZPiee";
@@ -68,7 +68,7 @@ $(document).ready(function () {
 
         })
     })
-})
+
 
 //This is where I am creating the on click function to make the images go from still to animating and vice versa.
     $(document).on("click",".gif", function () {

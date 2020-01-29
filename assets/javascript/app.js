@@ -10,17 +10,21 @@ function buttonReady(arr) {
         console.log(button);
         button.text(arr[i]);
         $("#buttons").append(button);
+
     }
     
 }
 //function for adding a new anime button through text box
-
+$(document).ready(function(){
 $("#submit").on("click", function (event) {
     event.preventDefault();
     input = $("#userInput").val().trim();
+    if(input===""){
+        return false;
+    }
     topics.push(input)
     buttonReady(topics)
-    input.empty()
+    $("#userInput").val("")
 
 })
 
@@ -53,7 +57,7 @@ $(document).ready(function () {
                 animeImage.addClass("gif")
                 animeImage.attr("data-still", results[i].images.fixed_height_still.url)
                 animeImage.attr("data-animate", results[i].images.fixed_height.url)
-                animeImage.attr("data-state", "still")
+                animeImage.attr("data-state", "animate")
                 animeImage.attr("src", results[i].images.fixed_height.url)
                 animeDiv.addClass("animeDiv")
                 animeDiv.append(p)
@@ -67,8 +71,7 @@ $(document).ready(function () {
 })
 
 //This is where I am creating the on click function to make the images go from still to animating and vice versa.
-$(document).ready(function () {
-    $(".gif").on("click", function () {
+    $(document).on("click",".gif", function () {
         var state = $(this).attr("data-state");
         if (state === "still") {
             $(this).attr("src", $(this).attr("data-animate"));
@@ -81,6 +84,6 @@ $(document).ready(function () {
     })
 })
 
-
+//This is to make sure after you have added another button with the submit button they will still return Gifs
 
 buttonReady(topics)

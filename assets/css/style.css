@@ -1,0 +1,15 @@
+body{
+    background-image:url("../images/kamehouse.png");
+    font-family: 'Bangers', cursive;
+    font-size:25px
+}
+h1{
+    color:#e6ffff;
+    font-size:75px
+}
+.animeDiv{
+    display:inline-block
+}
+.container{
+    text-align: center;
+}
